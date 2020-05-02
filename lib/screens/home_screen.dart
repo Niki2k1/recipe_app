@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:recipe_app/components/hotel_carousel.dart';
 import 'package:recipe_app/components/meal_carousel.dart';
 
 class Homescreen extends StatefulWidget {
@@ -10,6 +11,7 @@ class Homescreen extends StatefulWidget {
 
 class _HomescreenState extends State<Homescreen> {
   int _selectedIndex = 0;
+  int _currentTab = 0;
 
   List<IconData> _icons = [
     FontAwesomeIcons.utensils,
@@ -70,10 +72,51 @@ class _HomescreenState extends State<Homescreen> {
                   )
                   .toList(),
             ),
-            SizedBox(height: 20.0,),
+            SizedBox(
+              height: 20.0,
+            ),
             MealCarousel(),
+            SizedBox(
+              height: 20.0,
+            ),
+            //HotelCarousel()
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentTab,
+        onTap: (int value) {
+          setState(() {
+            _currentTab = value;
+          });
+        },
+        items: [
+          BottomNavigationBarItem(
+              title: SizedBox.shrink(),
+              icon: Icon(
+                Icons.search,
+                size: 30.0,
+              )),
+          BottomNavigationBarItem(
+              title: SizedBox.shrink(),
+              icon: Icon(
+                FontAwesomeIcons.pizzaSlice,
+                size: 25.0,
+              )),
+          BottomNavigationBarItem(
+              title: SizedBox.shrink(),
+              icon: CircleAvatar(
+                radius: 17,
+                backgroundColor: _currentTab == 2
+                    ? Theme.of(context).primaryColor
+                    : Colors.transparent,
+                child: CircleAvatar(
+                  backgroundImage:
+                      NetworkImage('http://i.imgur.com/zL4Krbz.jpg'),
+                  radius: 15,
+                ),
+              ))
+        ],
       ),
     );
   }
