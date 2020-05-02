@@ -10,8 +10,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Recipe App',
       theme: ThemeData(
-        primaryColor: Color(0xFF3EBACE),
-        accentColor: Color(0xFFD8ECF1),
+        primaryColor: Color(0xFFCF923E),
+        accentColor: Color(0xFFF2E8DA),
         scaffoldBackgroundColor: Color(0xFFF3F5F7)
       ),
       debugShowCheckedModeBanner: false,
